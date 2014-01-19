@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="locations">  
+	        <list>  
+	            <value>classpath:config.properties</value>  
+	        </list>  
+	    </property>  
+	    <property name="systemPropertiesModeName">  
+	        <value>SYSTEM_PROPERTIES_MODE_OVERRIDE</value>  
+	    </property>  
+	</bean>
+	
+	<!-- NoSQL数据库实现类 -->
+	<bean name="MongoDBImpl" class="com.tite.system.comfc.nosql.impl.MongodbImpl">
+		<constructor-arg>
+			<list>
+				<bean class="com.tite.system.comfc.nosql.commontypes.DBConnection">
+					<property name="DBAddress" value="${mongodb.server}" />
+					<property name="DBPort" value="${mongodb.port}" />
+				</bean>
+				<!-- 若配置了副本集,则在此处添加新的bean节点,并将属性配置指向新的副本集 -->
+				<!-- 
+				<bean class="com.tite.system.comfc.nosql.commontypes.DBConnection">
+					<property name="DBAddress" value="${mongodb.replicaset.server}" />
+					<property name="DBPort" value="${mongodb.replicaset.port}" />
+				</bean>
+				 -->
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<bean class="com.tite.system.comfc.nosql.commontypes.DBOptions">
+				<property name="AutoConnectRetry" value="${mongodb.options.autoConnectRetry}" />
+				<property name="ConnectionsPerHost" value="${mongodb.options.connectionsPerHost}" />
+				<property name="ConnectTimeout" value="${mongodb.options.connectTimeout}" />
+				<property name="MaxWaitTime" value="${mongodb.options.maxWaitTime}" />
+				<property name="SocketKeepAlive" value="${mongodb.options.socketKeepAlive}" />
+				<property name="SocketTimeout" value="${mongodb.options.socketTimeout}" />
+			</bean>
+		</constructor-arg>
+		<property name="backgroundIndex" value="false" />
+	</bean>
+	
+	<bean name="userImpl" 
+		class="com.tite.system.wherefriends.wherefriends.core.db.impl.UserImpl">
+		<constructor-arg>
+			<bean class="com.supermap.digicity.dfc.nosql.commontypes.DBCollectionInfo">
+				<property name="DBName" value="WHEREFRIENDS" />
+				<property name="CollectionName" value="WF_USER" />
+			</bean>
+		</constructor-arg>
+		<property name="nosql" ref="MongoDBImpl" />
+		<property name="minCoord" value="-180" />
+		<property name="maxCoord" value="180" />
+	</bean>
+</beans>
