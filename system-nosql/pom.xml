@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+  	<groupId>com.tite.system</groupId>
+    <artifactId>system-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>system-nosql</artifactId>
+  <name>system-nosql</name>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  	</dependency>
+  	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <scope>test</scope>
+    </dependency>
+  	<dependency>
+  		<groupId>org.mongodb</groupId>
+  		<artifactId>mongo-java-driver</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.tite.system</groupId>
+  		<artifactId>system-utility</artifactId>
+  		<version>${project.version}</version>
+  	</dependency>
+  	<!-- 引入将Lucene索引写入Mongodb数据库的工具组件 -->
+	<dependency>
+		<groupId>org.lumongo</groupId>
+		<artifactId>lumongo-storage</artifactId>
+	</dependency>
+  </dependencies>
+</project>
