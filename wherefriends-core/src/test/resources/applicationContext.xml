@@ -53,13 +53,13 @@
 	<bean name="userImpl" 
 		class="com.tite.system.wherefriends.wherefriends.core.db.impl.UserImpl">
 		<constructor-arg>
-			<bean class="com.supermap.digicity.dfc.nosql.commontypes.DBCollectionInfo">
+			<bean class="com.tite.system.comfc.nosql.commontypes.DBCollectionInfo">
 				<property name="DBName" value="WHEREFRIENDS" />
 				<property name="CollectionName" value="WF_USER" />
 			</bean>
 		</constructor-arg>
-		<property name="nosql" ref="MongoDBImpl" />
-		<property name="minCoord" value="-180" />
-		<property name="maxCoord" value="180" />
+		<constructor-arg value="-180"/>
+		<constructor-arg value="180"/>
+		<property name="noSQLClient" ref="MongoDBImpl" />
 	</bean>
 </beans>

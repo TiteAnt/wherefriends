@@ -2,6 +2,7 @@ package com.tite.system.wherefriends.wherefriends.core.db.commontype;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -241,8 +242,10 @@ public class User implements IDBModel {
 			this.upDate = (Date)map.get(UPDATE);
 		}
 		if(map.get(COORD) != null){
-			double[] point = (double[])map.get(COORD);
-			this.coord = new LocatePoint(point[0], point[1]);
+			@SuppressWarnings("unchecked")
+			List<Object> point = (List<Object>)map.get(COORD);
+			this.coord = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
+					Double.parseDouble(point.get(1).toString()));
 		}
 		if(map.get(ONLINE) != null){
 			if("1".equalsIgnoreCase(map.get(ONLINE).toString())){

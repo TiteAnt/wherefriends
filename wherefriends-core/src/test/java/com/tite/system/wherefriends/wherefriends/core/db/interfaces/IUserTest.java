@@ -141,7 +141,7 @@ public class IUserTest extends TestCase{
 		assertTrue(blnDelete);
 		
 		List<User> users = userImpl.getUsers("王五", new QueryOptions());
-		assertEquals(1, users.size());
+		assertEquals(0, users.size());
 	}
 
 	@Test
@@ -173,6 +173,7 @@ public class IUserTest extends TestCase{
 		assertEquals(userId_2, users.get(0).getId().toString());
 		options.setPageIndex(2);
 		options.setPageSize(5);
+		users = userImpl.getUsers("李四",options);
 		assertEquals(0, users.size());
 	}
 
