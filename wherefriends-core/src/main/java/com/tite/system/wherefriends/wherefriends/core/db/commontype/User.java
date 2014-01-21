@@ -16,7 +16,7 @@ public class User implements IDBModel {
 	private String loginName;
 	private String loginPassword;
 	private String email;
-	private long phone;
+	private String phone;
 	//true为男, false为女
 	private boolean sex;
 	private byte[] headImg;
@@ -89,11 +89,11 @@ public class User implements IDBModel {
 		this.email = email;
 	}
 
-	public long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -222,7 +222,7 @@ public class User implements IDBModel {
 			this.email = map.get(EMAIL).toString();
 		}
 		if(map.get(PHONE) != null){
-			this.phone = Long.parseLong(map.get(PHONE).toString());
+			this.phone = map.get(PHONE).toString();
 		}
 		if(map.get(SEX) != null){
 			if("1".equalsIgnoreCase(map.get(SEX).toString())){
