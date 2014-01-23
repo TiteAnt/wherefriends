@@ -62,4 +62,17 @@
 		<constructor-arg value="180"/>
 		<property name="noSQLClient" ref="MongoDBImpl" />
 	</bean>
+	
+	<bean name="userFriendImpl" 
+		class="com.tite.system.wherefriends.wherefriends.core.db.impl.UserFriendImpl">
+		<constructor-arg>
+			<bean class="com.tite.system.comfc.nosql.commontypes.DBCollectionInfo">
+				<property name="DBName" value="WHEREFRIENDS" />
+				<property name="CollectionName" value="WF_USERFRIEND" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg value="-180"/>
+		<constructor-arg value="180"/>
+		<property name="noSQLClient" ref="MongoDBImpl" />
+	</bean>
 </beans>

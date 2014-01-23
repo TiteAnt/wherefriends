@@ -1,6 +1,7 @@
 package com.tite.system.wherefriends.wherefriends.core.db.commontype;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,12 +17,12 @@ public class XZQH implements IDBModel {
 	private LocatePoint[] coords;
 	private LocatePoint coord;
 	
-	private static final String ID = "_id";
-	private static final String TYPE = "type";
-	private static final String NAME = "name";
-	private static final String PARENTID = "pid";
-	private static final String COORDS = "coords";
-	private static final String COORD = "coord";
+	public static final String ID = "_id";
+	public static final String TYPE = "type";
+	public static final String NAME = "name";
+	public static final String PARENTID = "pid";
+	public static final String COORDS = "coords";
+	public static final String COORD = "coord";
 	
 	public UUID getId() {
 		return id;
@@ -98,6 +99,7 @@ public class XZQH implements IDBModel {
 		return map;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void fromMap(Map<String, Object> map) {
 		if(map.get(ID) != null){
@@ -113,15 +115,19 @@ public class XZQH implements IDBModel {
 			this.parentId = UUID.fromString(map.get(PARENTID).toString());
 		}
 		if(map.get(COORDS) != null){
-			double[][] points = (double[][])map.get(COORDS);
-			this.coords = new LocatePoint[points.length];
-			for(int i=0; i<points.length; i++){
-				this.coords[i] = new LocatePoint(points[i][0], points[i][1]);
+			List<Object> points = (List<Object>)map.get(COORDS);
+			this.coords = new LocatePoint[points.size()];
+			List<Object> point = null;
+			for(int i=0; i<points.size(); i++){
+				point = (List<Object>)points.get(i);
+				this.coords[i] = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
+						Double.parseDouble(point.get(1).toString()));
 			}
 		}
 		if(map.get(COORD) != null){
-			double[] point = (double[])map.get(COORD);
-			this.coord = new LocatePoint(point[0], point[1]);
+			List<Object> point = (List<Object>)map.get(COORD);
+			this.coord = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
+					Double.parseDouble(point.get(1).toString()));
 		}
 	}
 

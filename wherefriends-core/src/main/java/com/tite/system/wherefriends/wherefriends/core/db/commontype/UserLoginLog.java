@@ -16,11 +16,11 @@ public class UserLoginLog implements IDBModel {
 	private Date logoutTime;
 	private long onlineTime;
 	
-	private static final String ID = "_id";
-	private static final String USERID = "uid";
-	private static final String LOGINTIME = "ltime";
-	private static final String LOGOUTTIME = "lttime";
-	private static final String ONLINETIME = "oltime";
+	public static final String ID = "_id";
+	public static final String USERID = "uid";
+	public static final String LOGINTIME = "ltime";
+	public static final String LOGOUTTIME = "lttime";
+	public static final String ONLINETIME = "oltime";
 	
 	public UUID getId() {
 		return id;

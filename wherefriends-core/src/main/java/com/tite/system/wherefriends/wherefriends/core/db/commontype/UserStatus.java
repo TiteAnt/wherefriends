@@ -16,11 +16,11 @@ public class UserStatus implements IDBModel {
 	private Date date;
 	private int type;
 	
-	private static final String ID = "_id";
-	private static final String USERID = "uid";
-	private static final String DESC = "desc";
-	private static final String DATE = "date";
-	private static final String TYPE = "type";
+	public static final String ID = "_id";
+	public static final String USERID = "uid";
+	public static final String DESC = "desc";
+	public static final String DATE = "date";
+	public static final String TYPE = "type";
 	
 	public UUID getId() {
 		return id;

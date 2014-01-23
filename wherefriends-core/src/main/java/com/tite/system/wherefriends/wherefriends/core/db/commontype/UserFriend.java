@@ -1,6 +1,7 @@
 package com.tite.system.wherefriends.wherefriends.core.db.commontype;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -8,7 +9,7 @@ import com.tite.system.comfc.nosql.interfaces.IDBModel;
 /**
  * 用户朋友关系表
  * */
-public class UserFriends implements IDBModel {
+public class UserFriend implements IDBModel {
 	private UUID id;
 	private UUID userId;
 	private UUID friendId;
@@ -18,14 +19,14 @@ public class UserFriends implements IDBModel {
 	private boolean online;
 	private LocatePoint coord;
 	
-	private static final String ID = "_id";
-	private static final String USERID = "uid";
-	private static final String FRIENDID = "fid";
-	private static final String FRIENDALIAS = "falias";
-	private static final String OPENLBS = "olbs";
-	private static final String OPENCTRIP = "ocp";
-	private static final String ONLINE = "oline";
-	private static final String COORD = "coord";
+	public static final String ID = "_id";
+	public static final String USERID = "uid";
+	public static final String FRIENDID = "fid";
+	public static final String FRIENDALIAS = "falias";
+	public static final String OPENLBS = "olbs";
+	public static final String OPENCTRIP = "ocp";
+	public static final String ONLINE = "oline";
+	public static final String COORD = "coord";
 	
 	public UUID getId() {
 		return id;
@@ -163,8 +164,10 @@ public class UserFriends implements IDBModel {
 			}
 		}
 		if(map.get(COORD) != null){
-			double[] point = (double[])map.get(COORD);
-			this.coord = new LocatePoint(point[0], point[1]);
+			@SuppressWarnings("unchecked")
+			List<Object> point = (List<Object>)map.get(COORD);
+			this.coord = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
+					Double.parseDouble(point.get(1).toString()));
 		}
 	}
 }

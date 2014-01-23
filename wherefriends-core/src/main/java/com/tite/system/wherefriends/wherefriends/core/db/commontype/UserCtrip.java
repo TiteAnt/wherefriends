@@ -19,14 +19,14 @@ public class UserCtrip implements IDBModel {
 	private String desc;
 	private Date date;
 	
-	private static final String ID = "_id";
-	private static final String USERID = "uid";
-	private static final String OUTPLACEID = "opid";
-	private static final String INPLACEID = "ipid";
-	private static final String OUTDATE = "odate";
-	private static final String INDATE = "idate";
-	private static final String DESC = "desc";
-	private static final String DATE = "date";
+	public static final String ID = "_id";
+	public static final String USERID = "uid";
+	public static final String OUTPLACEID = "opid";
+	public static final String INPLACEID = "ipid";
+	public static final String OUTDATE = "odate";
+	public static final String INDATE = "idate";
+	public static final String DESC = "desc";
+	public static final String DATE = "date";
 	
 	public UUID getId() {
 		return id;

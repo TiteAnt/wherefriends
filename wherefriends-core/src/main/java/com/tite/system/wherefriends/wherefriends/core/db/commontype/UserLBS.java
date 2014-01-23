@@ -2,6 +2,7 @@ package com.tite.system.wherefriends.wherefriends.core.db.commontype;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,11 +16,11 @@ public class UserLBS implements IDBModel {
 	private UUID xzqhId;
 	private Date date;
 	
-	private static final String ID = "_id";
-	private static final String USERID = "uid";
-	private static final String COORD = "coord";
-	private static final String XZHQID = "xzqhid";
-	private static final String DATE = "date";
+	public static final String ID = "_id";
+	public static final String USERID = "uid";
+	public static final String COORD = "coord";
+	public static final String XZHQID = "xzqhid";
+	public static final String DATE = "date";
 	
 	public UUID getId() {
 		return id;
@@ -91,8 +92,10 @@ public class UserLBS implements IDBModel {
 			this.userId = UUID.fromString(map.get(USERID).toString());
 		}
 		if(map.get(COORD) != null){
-			double[] point = (double[])map.get(COORD);
-			this.coord = new LocatePoint(point[0], point[1]);
+			@SuppressWarnings("unchecked")
+			List<Object> point = (List<Object>)map.get(COORD);
+			this.coord = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
+					Double.parseDouble(point.get(1).toString()));
 		}
 		if(map.get(XZHQID) != null){
 			this.xzqhId = UUID.fromString(map.get(XZHQID).toString());
