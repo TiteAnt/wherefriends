@@ -1,10 +1,10 @@
-package com.tite.system.wherefriends.wherefriends.core.db.interfaces;
+package com.tite.system.wherefriends.core.db.interfaces;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.UserLBS;
+import com.tite.system.wherefriends.core.db.commontype.UserLBS;
 
 /**
  * 定义用户位置信息操作接口

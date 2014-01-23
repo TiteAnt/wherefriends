@@ -1,4 +1,4 @@
-package com.tite.system.wherefriends.wherefriends.core.db.commontype;
+package com.tite.system.wherefriends.core.db.commontype;
 
 import java.util.Date;
 import java.util.HashMap;

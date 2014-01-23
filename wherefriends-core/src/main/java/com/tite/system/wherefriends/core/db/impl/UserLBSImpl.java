@@ -1,4 +1,4 @@
-package com.tite.system.wherefriends.wherefriends.core.db.impl;
+package com.tite.system.wherefriends.core.db.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,8 +11,8 @@ import java.util.UUID;
 import com.tite.system.comfc.nosql.commontypes.DBCollectionInfo;
 import com.tite.system.comfc.nosql.commontypes.QueryOptions;
 import com.tite.system.comfc.nosql.interfaces.INoSQL;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.UserLBS;
-import com.tite.system.wherefriends.wherefriends.core.db.interfaces.IUserLBS;
+import com.tite.system.wherefriends.core.db.commontype.UserLBS;
+import com.tite.system.wherefriends.core.db.interfaces.IUserLBS;
 
 public class UserLBSImpl implements IUserLBS {
 	private INoSQL noSQLClient;

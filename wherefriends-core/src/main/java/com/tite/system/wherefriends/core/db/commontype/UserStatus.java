@@ -1,26 +1,26 @@
-package com.tite.system.wherefriends.wherefriends.core.db.commontype;
+package com.tite.system.wherefriends.core.db.commontype;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import com.tite.system.comfc.nosql.interfaces.IDBModel;
-
-public class UserLBS implements IDBModel {
+/**
+ * 用户状态模型
+ * */
+public class UserStatus implements IDBModel {
 	private UUID id;
 	private UUID userId;
-	//朋友上次出现的位置
-	private LocatePoint coord;
-	private UUID xzqhId;
+	private String desc;
 	private Date date;
+	private int type;
 	
 	public static final String ID = "_id";
 	public static final String USERID = "uid";
-	public static final String COORD = "coord";
-	public static final String XZHQID = "xzqhid";
+	public static final String DESC = "desc";
 	public static final String DATE = "date";
+	public static final String TYPE = "type";
 	
 	public UUID getId() {
 		return id;
@@ -38,20 +38,12 @@ public class UserLBS implements IDBModel {
 		this.userId = userId;
 	}
 
-	public LocatePoint getCoord() {
-		return coord;
+	public String getDesc() {
+		return desc;
 	}
 
-	public void setCoord(LocatePoint coord) {
-		this.coord = coord;
-	}
-
-	public UUID getXzqhId() {
-		return xzqhId;
-	}
-
-	public void setXzqhId(UUID xzqhId) {
-		this.xzqhId = xzqhId;
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
 	public Date getDate() {
@@ -60,6 +52,14 @@ public class UserLBS implements IDBModel {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	@Override
@@ -73,13 +73,13 @@ public class UserLBS implements IDBModel {
 		if(this.userId != null){
 			map.put(USERID, this.userId.toString());
 		}
-		if(this.coord != null){
-			map.put(COORD, new double[]{this.coord.getX(), this.coord.getY()});
+		map.put(DESC, this.desc);
+		if(this.date != null){
+			map.put(DATE, this.date);
+		}else{
+			map.put(DATE, new Date());
 		}
-		if(this.xzqhId != null){
-			map.put(XZHQID, this.xzqhId.toString());
-		}
-		map.put(DATE, this.date);
+		map.put(TYPE, this.type);
 		return map;
 	}
 
@@ -91,17 +91,15 @@ public class UserLBS implements IDBModel {
 		if(map.get(USERID) != null){
 			this.userId = UUID.fromString(map.get(USERID).toString());
 		}
-		if(map.get(COORD) != null){
-			@SuppressWarnings("unchecked")
-			List<Object> point = (List<Object>)map.get(COORD);
-			this.coord = new LocatePoint(Double.parseDouble(point.get(0).toString()), 
-					Double.parseDouble(point.get(1).toString()));
-		}
-		if(map.get(XZHQID) != null){
-			this.xzqhId = UUID.fromString(map.get(XZHQID).toString());
-		}
 		if(map.get(DATE) != null){
 			this.date = (Date)map.get(DATE);
 		}
+		if(map.get(DESC) != null){
+			this.desc = map.get(DESC).toString();
+		}
+		if(map.get(TYPE) != null){
+			this.type = Integer.parseInt(map.get(TYPE).toString());
+		}
 	}
+
 }

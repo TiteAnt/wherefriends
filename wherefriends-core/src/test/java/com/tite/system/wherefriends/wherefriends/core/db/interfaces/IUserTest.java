@@ -15,8 +15,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.tite.system.comfc.nosql.commontypes.QueryOptions;
 import com.tite.system.comfc.nosql.interfaces.INoSQL;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.LocatePoint;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.User;
+import com.tite.system.wherefriends.core.db.commontype.LocatePoint;
+import com.tite.system.wherefriends.core.db.commontype.User;
+import com.tite.system.wherefriends.core.db.interfaces.IUser;
 
 public class IUserTest extends TestCase{
 	

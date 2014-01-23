@@ -15,8 +15,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.tite.system.comfc.nosql.interfaces.INoSQL;
 import com.tite.system.comfc.utility.DateFormat;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.LocatePoint;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.UserLBS;
+import com.tite.system.wherefriends.core.db.commontype.LocatePoint;
+import com.tite.system.wherefriends.core.db.commontype.UserLBS;
+import com.tite.system.wherefriends.core.db.interfaces.IUserLBS;
 
 public class IUserLBSTest extends TestCase{
 	

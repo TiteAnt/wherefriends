@@ -1,10 +1,10 @@
-package com.tite.system.wherefriends.wherefriends.core.db.interfaces;
+package com.tite.system.wherefriends.core.db.interfaces;
 
 import java.util.List;
 import java.util.UUID;
 
 import com.tite.system.comfc.nosql.commontypes.QueryOptions;
-import com.tite.system.wherefriends.wherefriends.core.db.commontype.UserFriend;
+import com.tite.system.wherefriends.core.db.commontype.UserFriend;
 
 /**
  * 定义用户朋友的操作接口
