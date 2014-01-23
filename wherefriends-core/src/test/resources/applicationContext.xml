@@ -58,8 +58,8 @@
 				<property name="CollectionName" value="WF_USER" />
 			</bean>
 		</constructor-arg>
-		<constructor-arg value="-180"/>
-		<constructor-arg value="180"/>
+		<constructor-arg value="${mongodb.spatialindex.min}"/>
+		<constructor-arg value="${mongodb.spatialindex.max}"/>
 		<property name="noSQLClient" ref="MongoDBImpl" />
 	</bean>
 	
@@ -71,8 +71,21 @@
 				<property name="CollectionName" value="WF_USERFRIEND" />
 			</bean>
 		</constructor-arg>
-		<constructor-arg value="-180"/>
-		<constructor-arg value="180"/>
+		<constructor-arg value="${mongodb.spatialindex.min}"/>
+		<constructor-arg value="${mongodb.spatialindex.max}"/>
+		<property name="noSQLClient" ref="MongoDBImpl" />
+	</bean>
+	
+	<bean name="UserLBSImpl" 
+		class="com.tite.system.wherefriends.wherefriends.core.db.impl.UserLBSImpl">
+		<constructor-arg>
+			<bean class="com.tite.system.comfc.nosql.commontypes.DBCollectionInfo">
+				<property name="DBName" value="WHEREFRIENDS" />
+				<property name="CollectionName" value="WF_USER_LBS" />
+			</bean>
+		</constructor-arg>
+		<constructor-arg value="${mongodb.spatialindex.min}"/>
+		<constructor-arg value="${mongodb.spatialindex.max}"/>
 		<property name="noSQLClient" ref="MongoDBImpl" />
 	</bean>
 </beans>
